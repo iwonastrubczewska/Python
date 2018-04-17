@@ -1,39 +1,31 @@
 
-
-# Create your models here.
 from django.db import models
-
-# Create your models here.
-class Employer(models.Model):
-    id = models.IntegerField();
-    name = models.CharField(max_length=50)
 
 class User(models.Model):
     name = models.CharField(max_length=50)
-    phone_no = models.BigIntegerField
+    isEmployer = models.BooleanField(default=False)
+
+class Company(models.Model):
+    name = models.CharField(max_length=50)
 
 class Offer(models.Model):
-    company = models.ForeignKey(Employer, models.CASCADE)
+    company = models.ForeignKey(Company, models.CASCADE)
     position = models.CharField(max_length=50)
-    descryption = models.TextField
-
-class Question(models.Model):  # sprawdzić czy potrzbene są pytania, czy każdy pracodawca ma sam wymyślaś swoej
-    offer = models.ForeignKey (Offer, models.CASCADE)
-    age = models.IntegerField
-    education = models.TextField
-    experience = models.TextField
-    practice = models.TextField
-    address = models.CharField(max_length=500)
+    description = models.TextField
+    startDate = models.DateTimeField
+    endDate = models.DateTimeField
 
 class Form(models.Model):
-    offer = models.ForeignKey (Offer, models.CASCADE)
+    offer = models.ForeignKey(Offer, models.CASCADE)
 
-
+class Question(models.Model):
+    offer = models.ForeignKey(Offer, models.CASCADE)
+    text = models.TextField
 
 class Answer(models.Model):
     question = models.ForeignKey(Question, models.CASCADE)
-
-
+    form = models.ForeignKey(Form, models.CASCADE)
+    text = models.TextField
 
 
 

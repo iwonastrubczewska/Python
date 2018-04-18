@@ -1,7 +1,10 @@
+from django.http import HttpResponse
 
 from mainapp.models import Offer
 from django.views import generic
 
+def index(request):
+    return HttpResponse("it works")
 
 class HomeView(generic.DetailView):
     model = Offer

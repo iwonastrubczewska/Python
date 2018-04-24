@@ -6,10 +6,9 @@ from .models import *
 
 class IndexView(generic.ListView):
     template_name = 'mainapp/index.html'
-    context_object_name = 'latest_question_list'
+    context_object_name = 'latest_offer_list'
 
     def get_queryset(self):
-        """Return the last five published questions."""
         return Offer.objects.order_by('-id')
 
 

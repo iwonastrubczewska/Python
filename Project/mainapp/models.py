@@ -12,9 +12,9 @@ class Employee(models.Model):
 class Offer(models.Model):
     company = models.ForeignKey(Employer, models.CASCADE)
     position = models.CharField(max_length=50)
-    description = models.TextField
-    startDate = models.DateTimeField
-    endDate = models.DateTimeField
+    description = models.CharField(max_length=500)
+    startDate = models.DateTimeField()
+    endDate = models.DateTimeField()
 
 class Form(models.Model):
     employee = models.ForeignKey(Employee, models.CASCADE)

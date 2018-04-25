@@ -1,1 +1,9 @@
-<h1>Base page</h1>
+<h1>{{ Employer.name }}</h1>
+
+<ul>
+{% for name in Employer.all %}
+    <li>{{ Employer.name }} </li>
+{% endfor %}
+</ul>
+
+<a></a>

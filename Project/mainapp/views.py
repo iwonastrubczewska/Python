@@ -11,11 +11,11 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         return Employer.objects.order_by('-id')
-
+'''
 def Employers(request):
     employers = Employer.objects.all()
     return render(request, "employers.html", {"employers":employers})
-
+'''
 class HomeView(generic.ListView):
     model = Offer
     template_name = 'mainapp/home.html'

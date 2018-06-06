@@ -11,7 +11,7 @@ class Employer(models.Model):
 
 class Employee(models.Model):
     name = models.CharField(max_length=50)
-    phoneNumber = models.BigIntegerField
+    #phoneNumber = models.BigIntegerField
     def __str__(self):
         return self.name[:50]
 

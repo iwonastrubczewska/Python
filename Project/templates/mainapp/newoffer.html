@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>{{ offer }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <meta charset="UTF-8">
+
+    <style>
+        .container-fluid {
+            background-color: white;
+            color: black;
+        }
+
+        .container {
+            background-color: white;
+            color: gray();
+        }
+         .navbar-brand {
+              background-color: gray();
+              color: orange;
+          }
+
+    </style>
+
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url  'index' %}">Portal Pracy </a>
+
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-center">
+                 <li><a href="{% url 'home' %}">{{ "Oferty" }}</a></li>
+                <li class="active"><a class="navbar-brand" href="{% url 'newoffer' %}">{{  "Dodaj ofertę" }}</a></li>
+
+                <div class="container-fluid">
+                    <div class="row">
+
+                        <form action="../submit" id="formentry" class="form-horizontal" role="form"
+                              data-parsley-validate novalidate>
+                            <div class="container-fluid shadow">
+                                <div class="row">
+                                    <div id="valErr" class="row viewerror clearfix hidden">
+                                        <div class="alert alert-danger">Error</div>
+                                    </div>
+                                    <div id="valOk" class="row viewerror clearfix hidden">
+                                        <div class="alert alert-success">Success</div>
+                                    </div>
+
+                                    <div class="row" style="display: block;">
+                                        <div class="col-md-12">
+                                            <div class="form-group brdbot">
+                                                <h1>Dodaj ofertę</h1>
+                                                <div class="controls col-sm-9">
+
+                                                    <p id="field15" data-default-label="Header"
+                                                       data-default-is-header="true" data-control-type="header"></p>
+                                                    <span id="errId1" class="error"></span></div>
+
+                                            </div>
+                                            <div class="form-group" style="display: block;">
+                                                <label class="control-label control-label-left col-sm-3" for="field1">Stanowisko<span
+                                                        class="req"> *</span></label>
+                                                <div class="controls col-sm-9">
+
+                                                    <input id="field1" type="text" class="form-control k-textbox"
+                                                           data-role="text" placeholder="Podaj stanowisko"
+                                                           required="required"
+                                                           data-parsley-errors-container="#errId2"><span id="errId2"
+                                                                                                         class="error"></span>
+                                                </div>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label control-label-left col-sm-3" for="field5">Opis<span
+                                                        class="req"> *</span></label>
+                                                <div class="controls col-sm-9">
+
+                                                    <textarea id="field5" rows="3" class="form-control k-textbox"
+                                                              data-role="textarea" required="required"
+                                                              data-parsley-errors-container="#errId3"></textarea><span
+                                                        id="errId3" class="error"></span></div>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label control-label-left col-sm-3" for="field14">Startowa
+                                                    data</label>
+                                                <div class="controls col-sm-9">
+
+                                                    <span class="k-widget k-datetimepicker k-header form-control"
+                                                          style=""><span class="k-picker-wrap k-state-default"><input
+                                                            id="field14" type="text" class="form-control k-input"
+                                                            data-role="datetime" role="textbox" aria-haspopup="true"
+                                                            aria-expanded="false" aria-disabled="false"
+                                                            aria-readonly="false"
+                                                            aria-label="Current focused date is null"
+                                                            data-error-container="#errfield14" style="width: 100%;"
+                                                            data-beforedate="#field13"
+                                                            data-beforedate-message="This value should be less than 'DateTime'"
+                                                            data-parsley-errors-container="#errId4"><span
+                                                            unselectable="on" class="k-select"><span unselectable="on"
+                                                                                                     class="k-icon k-i-calendar"
+                                                                                                     role="button"
+                                                                                                     aria-controls="field14_dateview">data </span><span
+                                                            unselectable="on" class="k-icon k-i-clock" role="button"
+                                                            aria-controls="field14_timeview"> godzina </span></span></span></span><span
+                                                        id="errId4" class="error"></span></div>
+
+                                            </div>
+                                            <div class="form-group" style="display: block;">
+                                                <label class="control-label control-label-left col-sm-3" for="field13">Koncowa
+                                                    data</label>
+                                                <div class="controls col-sm-9">
+
+                                                    <span class="k-widget k-datetimepicker k-header form-control"
+                                                          style=""><span class="k-picker-wrap k-state-default"><input
+                                                            id="field13" type="text" class="form-control k-input"
+                                                            data-role="datetime" role="textbox" aria-haspopup="true"
+                                                            aria-expanded="false" aria-disabled="false"
+                                                            aria-readonly="false"
+                                                            aria-label="Current focused date is null"
+                                                            data-error-container="#errfield13" style="width: 100%;"
+                                                            data-afterdate="#field14"
+                                                            data-afterdate-message="This value should be greater than 'Startowa data'"
+                                                            data-parsley-errors-container="#errId5"><span
+                                                            unselectable="on" class="k-select"><span unselectable="on"
+                                                                                                     class="k-icon k-i-calendar"
+                                                                                                     role="button"
+                                                                                                     aria-controls="field13_dateview">data    </span><span
+                                                            unselectable="on" class="k-icon k-i-clock" role="button"
+                                                            aria-controls="field13_timeview">godzina</span></span></span></span><span
+                                                        id="errId5" class="error"></span></div>
+
+                                            </div>
+                                            <div class="form-group">
+
+                                                <a class="btn btn-warning btn-lg btn-block">Dodaj</a>
+                                                <a href="{% url 'index' %}" class="btn btn-warning btn-lg btn-block">Wróć</a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </ul>
+        </div><!--/.nav-collapse -->
+
+    </div>
+</div>
+
+</body>
+</html>}

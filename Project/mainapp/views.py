@@ -5,6 +5,7 @@ from mainapp.models import Offer, Question
 from django.views.generic import ListView, DetailView
 from .models import *
 from django.shortcuts import render
+from .forms import OfferForm, UserForm, NewUserForm
 
 
 # strona glowna - mozna przejsc do dodawania ofetry lub przeglądania ofert
@@ -29,6 +30,25 @@ class OfferView(DetailView):
 
     def get_object(self):
         return get_object_or_404(Offer, pk=self.kwargs.get("pk"))
+
+
+def NewOffer(request):
+    form = OfferForm()
+    return render(request, 'mainapp/newoffer.html', {'form': form})
+
+def SignIn(request):
+    form = NewUserForm()
+    return render(request, 'mainapp/signin.html', {'form': form})
+
+def LogIn(request):
+    form = UserForm()
+    return render(request, 'mainapp/login.html', {'form': form})
+
+
+#to tylko zeby działało:
+def Contact(request):
+    form = UserForm()
+    return render(request, 'mainapp/contact.html', {'form': form})
 
 
 

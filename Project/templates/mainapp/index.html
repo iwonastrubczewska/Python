@@ -1,74 +1,93 @@
 <!DOCTYPE html>
 {% load staticfiles %}
 <html>
-  <head>
+<head>
     <title>Portal Pracy</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"/>
 
-      <style>
-          .jumbotron{
-              background-color: white;
-              color: gray();
-          }
-      </style>
+    <style>
+        .jumbotron {
+            background-color: white;
+            color: gray();
+        }
+    </style>
 
-  </head>
-  <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="{% url  'index' %}">Portal Pracy</a>
-      </div>
-      <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav navbar-center">
-          <li><a href="{% url 'home' %}">{{"Oferty"}}</a></li>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url  'index' %}">Portal Pracy</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-center">
+                <li><a class="navbar-brand" href="{% url 'home' %}">{{ "Oferty" }}</a></li>
+                <li><a class="navbar-brand" href="{% url 'newoffer' %}">{{ "Dodaj ofertę" }}</a></li>
 
-        </ul>
-        <!--<div class="navbar-right">
-          <form class="form-inline">
-            <div class="form-group">
-              <label class="sr-only" for="exampleInputEmail3">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
-            </div>
-            <div class="form-group">
-              <label class="sr-only" for="exampleInputPassword3">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
-            </div>
-            <button type="submit" class="btn btn-default">Sign in</button>
-          </form>
-      </div>-->
 
-      </div><!--/.nav-collapse -->
+            </ul>
+
+            <!--<div class="navbar-right">
+              <form class="form-inline">
+                <div class="form-group">
+                  <label class="sr-only" for="exampleInputEmail3">Email address</label>
+                  <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
+                </div>
+                <div class="form-group">
+                  <label class="sr-only" for="exampleInputPassword3">Password</label>
+                  <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-default">Sign in</button>
+              </form>
+          </div>-->
+
+        </div><!--/.nav-collapse -->
     </div>
-  </div>
+</div>
 
-  <div class="jumbotron"; content="width=device-width">
+<div class="jumbotron" ; content="width=device-width">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-4 ">
+            <div class="customDiv">
+                <a href="{% url 'signin' %}" class="btn btn-warning btn-lg btn-block">Zarejestruj się</a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 ">
+            <div class="customDiv">
+                <a href="{% url 'login' %}" class="btn btn-warning btn-lg btn-block">Zaloguj</a>
+            </div>
+        </div>
+    </div>
+</div>
+
     <div class="container">
-      <h1>Portal Pracy</h1>
-      <p class="lead">Pomgamy znaleźć pracę</p>
-      <a class="btn btn-warning btn-lg btn-block">Dodaj swoją ofertę pracy</a>
-       <a href="{% url 'home' %}" class="btn btn-warning btn-lg btn-block">Przeglądaj oferty pracy</a>
+        <h1>Portal Pracy</h1>
+        <p class="lead">Pomgamy znaleźć pracę</p>
+        <a href="{% url 'newoffer' %}" class="btn btn-warning btn-lg btn-block">Dodaj swoją ofertę pracy</a>
+        <a href="{% url 'home' %}" class="btn btn-warning btn-lg btn-block">Przeglądaj oferty pracy</a>
     </div>
-      <div class="container">
-      <h1>Pracodawcy korzystający z naszego portalu</h1>
-          <ul>
+
+    <div class="container">
+        <h1>Pracodawcy korzystający z naszego portalu</h1>
+        <ul>
             {% for Employer in  object_list %}
-            <li>
-               <p class="lead">{{Employer}}</p>
-            </li>
+                <li>
+                    <p class="lead">{{ Employer }}</p>
+                </li>
             {% endfor %}
-          </ul>
+        </ul>
 
     </div>
-  </div>
-  </body>
+</div>
+</body>
 </html>

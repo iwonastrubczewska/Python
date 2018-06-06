@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>{{ offer }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <meta charset="UTF-8">
+
+    <style>
+        .jumbotron {
+            background-color: white;
+            color: gray();
+        }
+
+        .navbar-brand {
+            background-color: gray();
+            color: orange;
+        }
+
+        .container {
+            background-color: white;
+            color black;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+    </style>
+
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url  'index' %}">Portal Pracy </a>
+
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-center">
+                <li class="active"><a class="navbar-brand" href="{% url 'login' %}">{{ "Logowanie" }}</a></li>
+
+
+                <div class="container-fluid">
+                    <div class="row">
+
+                        <form action="../submit" id="formentry" class="form-horizontal" role="form"
+                              data-parsley-validate novalidate>
+                            <div class="container-fluid shadow">
+                                <div class="row">
+                                    <div id="valErr" class="row viewerror clearfix hidden">
+                                        <div class="alert alert-danger">Oops! Seems there are some errors..</div>
+                                    </div>
+                                    <div id="valOk" class="row viewerror clearfix hidden">
+                                        <div class="alert alert-success">Yay! ..</div>
+                                    </div>
+
+
+                                    <div class="row" style="display: block;">
+                                        <div class="col-md-12">
+                                            <div class="form-group brdbot" style="display: block;">
+                                                <h1>Zaloguj sie</h1>
+                                                <div class="controls col-sm-9">
+
+                                                    <p id="field15" data-default-label="Header"
+                                                       data-default-is-header="true" data-control-type="header"></p>
+                                                    <span id="errId1" class="error"></span></div>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label control-label-left col-sm-3" for="field22">Login</label>
+                                                <div class="controls col-sm-9">
+
+                                                    <input id="field22" type="text" class="form-control k-textbox"
+                                                           data-role="text" data-parsley-minwords="4"
+                                                           data-parsley-errors-container="#errId2"><span id="errId2"
+                                                                                                         class="error"></span>
+                                                </div>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label control-label-left col-sm-3" for="field23">Haslo</label>
+                                                <div class="controls col-sm-9">
+
+                                                    <input id="field23" type="text" class="form-control k-textbox"
+                                                           data-role="text"
+                                                           data-parsley-errors-container="#errId3"><span id="errId3"
+                                                                                                         class="error"></span>
+                                                </div>
+
+                                            </div>
+                                            <div class="form-group">
+
+
+                                                <a class="btn btn-warning btn-lg btn-block">Zaloguj</a>
+                                                <a href="{% url 'index' %}" class="btn btn-warning btn-lg btn-block">Wróć</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+</body>
+</html>}

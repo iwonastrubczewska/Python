@@ -1,2 +1,63 @@
-<h1>Home page</h1>
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <title>Portal Pracy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!--<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" /> -->
 
+      <style>
+          .jumbotron{
+              background-color: white;
+              color: gray();
+          }
+          .navbar-brand {
+              background-color: gray();
+              color: orange;
+          }
+          ul{
+              list-style-type: none;
+          }
+      </style>
+
+  </head>
+
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="{% url  'index' %}">Portal Pracy</a>
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-center">
+          <li class="active"><a href="{% url 'home' %}">{{"Oferty"}}</a></li>
+
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+    <div class="jumbotron">
+         <div class="container">
+            <h1>Oferty pracy</h1>
+         {% if object_list %}
+            <ul>
+                {% for Offer in  object_list %}
+                <li>
+                    <a href="{% url 'offer' Offer.pk %}" class="btn btn-warning btn-lg btn-block">{{Offer}}</a>
+                </li>
+                {% endfor %}
+            </ul>
+         {% else %}
+            <a class="btn btn-warning btn-lg btn-block">Brak ofert do wyświetlenia</a>
+         {% endif %}
+         </div>
+    </div>
+  </body>
+</html>

@@ -1,26 +1,39 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-
+from django.shortcuts import get_object_or_404
 from mainapp.models import Offer, Question
-from django.views import generic
+from django.views.generic import ListView, DetailView
 from .models import *
+from django.shortcuts import render
 
-class IndexView(generic.ListView):
+
+# strona glowna - mozna przejsc do dodawania ofetry lub przeglądania ofert
+# lista pracodawcow
+class IndexView(ListView):
     template_name = 'mainapp/index.html'
-    context_object_name = 'latest_employers_list'
+    model = Employer
 
-    def get_queryset(self):
-        return Employer.objects.order_by('-id')
-'''
-def Employers(request):
-    employers = Employer.objects.all()
-    return render(request, "employers.html", {"employers":employers})
-'''
-class HomeView(generic.ListView):
+
+
+# wyswietla liste ofert
+class HomeView(ListView):
     model = Offer
     template_name = 'mainapp/home.html'
 
 
-class BaseView(generic.ListView):
-    model = Question
-    template_name = 'mainapp/base.html'
+
+# wyswietla szczegoly oferty
+class OfferView(DetailView):
+    model = Offer
+    template_name = 'mainapp/offer.html'
+
+    def get_object(self):
+        return get_object_or_404(Offer, pk=self.kwargs.get("pk"))
+
+
+
+
+
+#class BaseView(ListView):
+   #template_name = 'mainapp/base.html'
+
